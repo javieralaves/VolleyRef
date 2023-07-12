@@ -59,6 +59,7 @@ struct ContentView: View {
     }
     
     func matchRules() {
+        
         let scoreSum = teamOneScore + teamTwoScore
         
         if teamOneScore == 21 {
