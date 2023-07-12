@@ -66,12 +66,12 @@ struct ContentView: View {
             alertMessage = "Toca cambiar de lado"
             matchAlert = true
         } else if teamOneScore == 21 {
-            alertTitle = "Tenemos a un ganador"
-            alertMessage = "El equipo 1 ha ganado 🎉"
+            alertTitle = "Equipo 1 ha ganado 🎉"
+            alertMessage = "Por favor, comunicad el resultado por WhatsApp: +34 609 98 99 52"
             matchAlert = true
         } else if teamTwoScore == 21 {
-            alertTitle = "Tenemos a un ganador"
-            alertMessage = "El equipo 2 ha ganado 🎉"
+            alertTitle = "Equipo 2 ha ganado 🎉"
+            alertMessage = "Por favor, comunicad el resultado por WhatsApp: +34 609 98 99 52"
             matchAlert = true
         } else {
             matchAlert = false
