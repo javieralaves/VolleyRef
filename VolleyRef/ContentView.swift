@@ -61,17 +61,17 @@ struct ContentView: View {
     func matchRules() {
         let scoreSum = teamOneScore + teamTwoScore
         
-        if scoreSum.isMultiple(of: 7) {
-            alertTitle = "Cambio de lado"
-            alertMessage = "Toca cambiar de lado"
-            matchAlert = true
-        } else if teamOneScore == 21 {
+        if teamOneScore == 21 {
             alertTitle = "Equipo 1 ha ganado 🎉"
-            alertMessage = "Por favor, comunicad el resultado por WhatsApp: +34 609 98 99 52"
+            alertMessage = "Por favor, comunica el resultado por WhatsApp: +34 609 98 99 52"
             matchAlert = true
         } else if teamTwoScore == 21 {
             alertTitle = "Equipo 2 ha ganado 🎉"
-            alertMessage = "Por favor, comunicad el resultado por WhatsApp: +34 609 98 99 52"
+            alertMessage = "Por favor, comunica el resultado por WhatsApp: +34 609 98 99 52"
+            matchAlert = true
+        } else if scoreSum.isMultiple(of: 7) {
+            alertTitle = "Cambio de lado"
+            alertMessage = "Toca cambiar de lado"
             matchAlert = true
         } else {
             matchAlert = false
