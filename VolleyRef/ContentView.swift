@@ -12,11 +12,10 @@ struct ContentView: View {
     @State var teamOneScore: Int = 0
     @State var teamTwoScore: Int = 0
     
-    @State var switchAlert: Bool = false
-    @State var winAlert: Bool = false
-    
-    @State var matchWinner: String = ""
-    
+    @State var alertTitle: String = ""
+    @State var alertMessage: String = ""
+    @State var matchAlert: Bool = false
+        
     var body: some View {
         HStack {
             Spacer()
@@ -25,7 +24,7 @@ struct ContentView: View {
                 
                 Button {
                     teamOneScore += 1
-                    switchSides()
+                    matchRules()
                 } label: {
                     Text("\(teamOneScore)")
                         .font(.largeTitle)
@@ -40,7 +39,7 @@ struct ContentView: View {
                 
                 Button {
                     teamTwoScore += 1
-                    switchSides()
+                    matchRules()
                 } label: {
                     Text("\(teamTwoScore)")
                         .font(.largeTitle)
@@ -51,38 +50,31 @@ struct ContentView: View {
             }
             Spacer()
         }
-        .alert(isPresented: $switchAlert) {
-            Alert(title: Text("Switch sides"),
-                  message: Text("It's time to switch sides"),
+        .alert(isPresented: $matchAlert) {
+            Alert(title: Text(alertTitle),
+                  message: Text(alertMessage),
                   dismissButton: .default(Text("OK")))
         }
 
     }
     
-    func switchSides() {
+    func matchRules() {
         let scoreSum = teamOneScore + teamTwoScore
         
         if scoreSum.isMultiple(of: 7) {
-            switchAlert = true
-            print("Switch sides")
-        } else {
-            switchAlert = false
-        }
-    }
-    
-    func matchEnd() {
-        
-        if teamOneScore == 21 {
-            matchWinner = "Team 1"
-            print("Team 1 won")
-            winAlert = true
+            alertTitle = "Switch sides"
+            alertMessage = "It's time to switch sides"
+            matchAlert = true
+        } else if teamOneScore == 21 {
+            alertTitle = "We have a winner"
+            alertMessage = "Team 1 won the match"
+            matchAlert = true
         } else if teamTwoScore == 21 {
-            matchWinner = "Team 2"
-            print("Team 2 won")
-            winAlert = true
+            alertTitle = "We have a winner"
+            alertMessage = "Team 2 won the match"
+            matchAlert = true
         } else {
-            matchWinner = ""
-            print("Match ongoing")
+            matchAlert = false
         }
         
     }
