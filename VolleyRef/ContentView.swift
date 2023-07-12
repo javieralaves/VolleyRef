@@ -20,7 +20,7 @@ struct ContentView: View {
         HStack {
             Spacer()
             VStack (spacing: 20) {
-                Text("Team 1")
+                Text("Equipo 1")
                 
                 Button {
                     teamOneScore += 1
@@ -35,7 +35,7 @@ struct ContentView: View {
             }
             Spacer()
             VStack (spacing: 20) {
-                Text("Team 2")
+                Text("Equipo 2")
                 
                 Button {
                     teamTwoScore += 1
@@ -62,16 +62,16 @@ struct ContentView: View {
         let scoreSum = teamOneScore + teamTwoScore
         
         if scoreSum.isMultiple(of: 7) {
-            alertTitle = "Switch sides"
-            alertMessage = "It's time to switch sides"
+            alertTitle = "Cambio de lado"
+            alertMessage = "Toca cambiar de lado"
             matchAlert = true
         } else if teamOneScore == 21 {
-            alertTitle = "We have a winner"
-            alertMessage = "Team 1 won the match"
+            alertTitle = "Tenemos a un ganador"
+            alertMessage = "El equipo 1 ha ganado 🎉"
             matchAlert = true
         } else if teamTwoScore == 21 {
-            alertTitle = "We have a winner"
-            alertMessage = "Team 2 won the match"
+            alertTitle = "Tenemos a un ganador"
+            alertMessage = "El equipo 2 ha ganado 🎉"
             matchAlert = true
         } else {
             matchAlert = false
