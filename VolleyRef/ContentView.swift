@@ -18,6 +18,8 @@ struct ContentView: View {
     @State var alertTitle: String = ""
     @State var alertMessage: String = ""
     @State var matchAlert: Bool = false
+    
+    @FocusState private var nameIsFocused: Bool
         
     var body: some View {
         HStack {
@@ -26,6 +28,7 @@ struct ContentView: View {
                 
                 TextField(teamOneName, text: $teamOneName)
                     .multilineTextAlignment(.center)
+                    .focused($nameIsFocused)
                 
                 Button {
                     teamOneScore += 1
@@ -52,6 +55,7 @@ struct ContentView: View {
             VStack (spacing: 20) {
                 TextField(teamTwoName, text: $teamTwoName)
                     .multilineTextAlignment(.center)
+                    .focused($nameIsFocused)
                 
                 Button {
                     teamTwoScore += 1
@@ -81,6 +85,14 @@ struct ContentView: View {
                   message: Text(alertMessage),
                   dismissButton: .default(Text("OK")))
         }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Listo") {
+                    nameIsFocused = false
+                }
+            }
+        }
 
     }
     
@@ -89,11 +101,11 @@ struct ContentView: View {
         let scoreSum = teamOneScore + teamTwoScore
         
         if teamOneScore == 21 {
-            alertTitle = "Equipo 1 ha ganado 🎉"
+            alertTitle = "\(teamOneName) han ganado 🎉"
             alertMessage = "Por favor, comunica el resultado por WhatsApp: +34 609 98 99 52"
             matchAlert = true
         } else if teamTwoScore == 21 {
-            alertTitle = "Equipo 2 ha ganado 🎉"
+            alertTitle = "\(teamTwoName) han ganado 🎉"
             alertMessage = "Por favor, comunica el resultado por WhatsApp: +34 609 98 99 52"
             matchAlert = true
         } else if scoreSum.isMultiple(of: 7) {
