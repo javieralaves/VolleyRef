@@ -32,6 +32,16 @@ struct ContentView: View {
                         .background(Color.blue.opacity(0.1))
                         .cornerRadius(.infinity)
                 }
+                
+                Button {
+                    teamOneScore -= 1
+                    matchRules()
+                } label: {
+                    Image(systemName: "minus.circle")
+                        .font(.title)
+                        .foregroundColor(.secondary)
+                }
+                
             }
             Spacer()
             VStack (spacing: 20) {
@@ -47,6 +57,16 @@ struct ContentView: View {
                         .background(Color.blue.opacity(0.1))
                         .cornerRadius(.infinity)
                 }
+                
+                Button {
+                    teamTwoScore -= 1
+                    matchRules()
+                } label: {
+                    Image(systemName: "minus.circle")
+                        .font(.title)
+                        .foregroundColor(.secondary)
+                }
+                
             }
             Spacer()
         }
