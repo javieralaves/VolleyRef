@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var teamOneName: String = "Equipo 1"
+    @State var teamTwoName: String = "Equipo 2"
+    
     @State var teamOneScore: Int = 0
     @State var teamTwoScore: Int = 0
     
@@ -20,7 +23,9 @@ struct ContentView: View {
         HStack {
             Spacer()
             VStack (spacing: 20) {
-                Text("Equipo 1")
+                
+                TextField(teamOneName, text: $teamOneName)
+                    .multilineTextAlignment(.center)
                 
                 Button {
                     teamOneScore += 1
@@ -45,7 +50,8 @@ struct ContentView: View {
             }
             Spacer()
             VStack (spacing: 20) {
-                Text("Equipo 2")
+                TextField(teamTwoName, text: $teamTwoName)
+                    .multilineTextAlignment(.center)
                 
                 Button {
                     teamTwoScore += 1
